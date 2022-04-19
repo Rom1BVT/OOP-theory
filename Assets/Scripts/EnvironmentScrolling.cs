@@ -6,7 +6,7 @@ public class EnvironmentScrolling : MonoBehaviour
 {
     private BoxCollider groundCollider;
     private Vector3 initialPosition;
-    [SerializeField]private float speed;
+    private float speed = 40;
 
     private void Awake()
     {
