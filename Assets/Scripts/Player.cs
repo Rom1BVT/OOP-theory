@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class Player : Vehicles
 {
+    //MoveWithPlayerInput() variables
     private float speed = 15;
     private float yRotationMax = 10;
     private float xPositionRange = 17;
@@ -14,13 +15,26 @@ public class PlayerController : MonoBehaviour
     private Camera cam;
     public GameObject turret;
 
+    // Start is called before the first frame update
     void Start()
     {
+        healthPoint = 100;
+        speedFire = 10;
         cam = Camera.main;
     }
 
     // Update is called once per frame
     void Update()
+    {
+        MoveWithPlayerInput();
+
+        if (Input.GetButton("Fire1"))
+        {
+            Shoot(ammoPrefab, shotOrigin);
+        }
+    }
+
+    private void MoveWithPlayerInput()
     {
         float verticalInput = Input.GetAxis("Vertical");
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -41,7 +55,7 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y, zPositionMax);
         }
 
-        if (transform.position.x < -xPositionRange )
+        if (transform.position.x < -xPositionRange)
         {
             transform.position = new Vector3(-xPositionRange, transform.position.y, transform.position.z);
         }
@@ -57,7 +71,7 @@ public class PlayerController : MonoBehaviour
             if (yEulerRotation < yRotationMax)
             {
                 transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
-            }    
+            }
         }
         else if (horizontalInput < 0)
         {
@@ -79,7 +93,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // add a rotation to the turret to follow cursor
-            
+
         //get the mouse position in world space coordinates
         Vector3 mousePosition = Input.mousePosition;
         mousePosition.z = GameObject.Find("Main Camera").transform.position.y;
@@ -90,7 +104,6 @@ public class PlayerController : MonoBehaviour
 
         //apply this angle to the turret (reset the rotation and apply a rotate action) 
         float yTurretAngle = turretRotation.eulerAngles.y - 180;
-        Debug.Log(yTurretAngle);
         turret.transform.rotation = new Quaternion(0, 0, 0, 0);
         turret.transform.Rotate(0, yTurretAngle, 0);
 
