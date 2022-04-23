@@ -14,6 +14,7 @@ public class Player : Vehicles
 
     private Camera cam;
     public GameObject turret;
+    public GameObject bodyArmor;
 
     // Start is called before the first frame update
     void Start()
@@ -38,8 +39,7 @@ public class Player : Vehicles
     {
         float verticalInput = Input.GetAxis("Vertical");
         float horizontalInput = Input.GetAxis("Horizontal");
-        float yEulerRotation = transform.rotation.eulerAngles.y;
-        if (yEulerRotation > 180) { yEulerRotation -= 360; } //return the rotation between -180 and 180 
+
 
         //add a translation to the player
         transform.Translate(Vector3.forward * verticalInput * speed * Time.deltaTime, Space.World);
@@ -65,30 +65,33 @@ public class Player : Vehicles
         }
 
 
-        // add a rotation when the player moves left or right
+        // add a rotation to the body armor when the player moves left or right
+        float yEulerRotation = bodyArmor.transform.rotation.eulerAngles.y;
+        if (yEulerRotation > 180) { yEulerRotation -= 360; } //return the rotation between -180 and 180 
+
         if (horizontalInput > 0)
         {
             if (yEulerRotation < yRotationMax)
             {
-                transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
+                bodyArmor.transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
             }
         }
         else if (horizontalInput < 0)
         {
             if (yEulerRotation > -yRotationMax)
             {
-                transform.Rotate(-Vector3.up * rotationSpeed * Time.deltaTime);
+                bodyArmor.transform.Rotate(-Vector3.up * rotationSpeed * Time.deltaTime);
             }
         }
         else
         {
             if (yEulerRotation > 0)
             {
-                transform.Rotate(-Vector3.up * rotationSpeed * Time.deltaTime);
+                bodyArmor.transform.Rotate(-Vector3.up * rotationSpeed * Time.deltaTime);
             }
             else if (yEulerRotation < 0)
             {
-                transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
+                bodyArmor.transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
             }
         }
 
