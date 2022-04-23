@@ -2,19 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Van : Vehicles
+public class Tank : Vehicles
 {
     // Start is called before the first frame update
     void Start()
     {
-        healthPoint = 100;
+        healthPoint = 300;
         speedFire = 0.5f;
-        pointValue = 50;
+        pointValue = 150;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

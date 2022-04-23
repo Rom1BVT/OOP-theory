@@ -27,8 +27,9 @@ public class Ammunition : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    protected void OnCollisionEnter(Collision collision)
     {
-        
+        collision.gameObject.GetComponent<Vehicles>().TakeDamage(strikePower);
+        Destroy(gameObject);
     }
 }

@@ -14,6 +14,11 @@ public class Vehicles : MonoBehaviour
     public void TakeDamage(int damage)
     {
         healthPoint -= damage;
+        Debug.Log(healthPoint);
+        if (healthPoint <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
     protected void Shoot(GameObject ammoType, Transform origin)
     {
@@ -26,7 +31,7 @@ public class Vehicles : MonoBehaviour
     }
     protected void Shoot(GameObject ammoType, Transform origin, Vector3 direction)
     {
-
+        
     }
 
     private void UpdateLifebar()
