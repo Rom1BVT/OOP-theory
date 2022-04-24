@@ -129,6 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotOrigin: {fileID: 4093091273389667219}
   ammoPrefab: {fileID: 4082570663889379803, guid: 1a5883ea3cdb6ef4a89385222787dffb, type: 3}
+  HealthbarSliderPrefab: {fileID: 2294190142076272898, guid: 6ffee8aea4c6e1e4eb8a056610501ee0, type: 3}
 --- !u!65 &-2049831729467263451
 BoxCollider:
   m_ObjectHideFlags: 0

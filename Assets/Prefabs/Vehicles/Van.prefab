@@ -370,7 +370,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6848160770160037909}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 32.06}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_Children:
   - {fileID: 6848160770159597133}
@@ -459,6 +459,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotOrigin: {fileID: 6434950965332219260}
   ammoPrefab: {fileID: 4082570663889379803, guid: 1a5883ea3cdb6ef4a89385222787dffb, type: 3}
+  HealthbarSliderPrefab: {fileID: 2294190142076272898, guid: 6ffee8aea4c6e1e4eb8a056610501ee0, type: 3}
 --- !u!1 &6848160770160055445
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : Vehicles
 {
@@ -12,20 +13,17 @@ public class Player : Vehicles
     private float zPositionMin = -5;
     private float rotationSpeed = 100;
 
-    private Camera cam;
     public GameObject turret;
     public GameObject bodyArmor;
 
-    // Start is called before the first frame update
-    void Start()
+    private Player()
     {
         healthPoint = 100;
         speedFire = 10;
-        cam = Camera.main;
     }
 
-    // Update is called once per frame
-    void Update()
+    //this method will be called in every frame
+    protected override void Behaviour()
     {
         MoveWithPlayerInput();
 
@@ -33,6 +31,15 @@ public class Player : Vehicles
         {
             Shoot(ammoPrefab, shotOrigin);
         }
+    }
+
+    protected override void HandlingHealthbar()
+    {
+        if (HealthbarInstance == null)
+        {
+            HealthbarInstance = GameObject.Find("Player_Healthbar").GetComponent<Slider>();
+        }
+        HealthbarInstance.value = healthPoint / maxHealthPoint;
     }
 
     private void MoveWithPlayerInput()
@@ -100,7 +107,7 @@ public class Player : Vehicles
         //get the mouse position in world space coordinates
         Vector3 mousePosition = Input.mousePosition;
         mousePosition.z = GameObject.Find("Main Camera").transform.position.y;
-        Vector3 mouseWorldPos = cam.ScreenToWorldPoint(mousePosition);
+        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mousePosition);
 
         //calculate the angle between the player position and the mouse position
         Quaternion turretRotation = Quaternion.FromToRotation(Vector3.forward, transform.position - mouseWorldPos);

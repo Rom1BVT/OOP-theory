@@ -704,7 +704,7 @@ GameObject:
   - component: {fileID: 8656012994759495828}
   - component: {fileID: 3362110322672538062}
   m_Layer: 0
-  m_Name: PlayerX
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -740,5 +740,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotOrigin: {fileID: 5466502019286008410}
   ammoPrefab: {fileID: 4082570663889379803, guid: 1a5883ea3cdb6ef4a89385222787dffb, type: 3}
+  HealthbarSliderPrefab: {fileID: 0}
   turret: {fileID: 5873570210020946122}
   bodyArmor: {fileID: 2900711000190408871}

@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class Van : Vehicles
 {
-    // Start is called before the first frame update
-    void Start()
+    private Van()
     {
         healthPoint = 100;
         speedFire = 0.5f;
         pointValue = 50;
+        offsetBarPosition = new Vector3(0, 4, -2);
+    }
+
+    //this method will be called in every frame
+    protected override void Behaviour()
+    {
+
     }
 
 
