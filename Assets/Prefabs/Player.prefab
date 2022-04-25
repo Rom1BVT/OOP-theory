@@ -284,7 +284,6 @@ GameObject:
   - component: {fileID: 4620602932020006853}
   - component: {fileID: 1794155330664747679}
   - component: {fileID: 5289637485753774027}
-  - component: {fileID: 2939039867015175939}
   m_Layer: 0
   m_Name: Armor
   m_TagString: Untagged
@@ -359,20 +358,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2939039867015175939
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2900711000190408871}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 93b9de2c4710d6b4e9ac38987a064d42, type: 3}
 --- !u!1 &3612311665005369085
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,7 +399,6 @@ GameObject:
   - component: {fileID: 5233142876095615778}
   - component: {fileID: 7288529211145136637}
   - component: {fileID: 3686584378639247153}
-  - component: {fileID: 1643033749664033688}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -487,20 +471,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1643033749664033688
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5873570210020946122}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300010, guid: 93b9de2c4710d6b4e9ac38987a064d42, type: 3}
 --- !u!1 &7563232041615864222
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,9 +673,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8656012994759495828}
   - component: {fileID: 3362110322672538062}
+  - component: {fileID: 6602423342211731424}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -739,7 +710,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotOrigin: {fileID: 5466502019286008410}
-  ammoPrefab: {fileID: 4082570663889379803, guid: 1a5883ea3cdb6ef4a89385222787dffb, type: 3}
+  ammoPrefab: {fileID: 4082570663889379803, guid: 05ccf8e64564bd541a510f4ec5374bb9, type: 3}
   HealthbarSliderPrefab: {fileID: 0}
   turret: {fileID: 5873570210020946122}
   bodyArmor: {fileID: 2900711000190408871}
+--- !u!65 &6602423342211731424
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9145606861447670263}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.668857, y: 5.9827414, z: 6.837061}
+  m_Center: {x: 0.006870508, y: 2.9195747, z: 0.11573839}

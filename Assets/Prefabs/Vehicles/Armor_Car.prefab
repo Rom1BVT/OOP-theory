@@ -77,12 +77,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2958138630402158301}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.20201421, z: 4.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4283070810117545947}
-  m_RootOrder: 6
+  m_Father: {fileID: 4283070810117564883}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4283070810117119667
 GameObject:
@@ -468,7 +468,7 @@ GameObject:
   - component: {fileID: 8537303132403346599}
   m_Layer: 0
   m_Name: Armor_Car
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -490,7 +490,6 @@ Transform:
   - {fileID: 4283070810117622165}
   - {fileID: 4283070810117560971}
   - {fileID: 2119291874766412671}
-  - {fileID: 1369560956245596566}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -570,8 +569,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotOrigin: {fileID: 1369560956245596566}
-  ammoPrefab: {fileID: 4082570663889379803, guid: 1a5883ea3cdb6ef4a89385222787dffb, type: 3}
+  ammoPrefab: {fileID: 4082570663889379803, guid: 09409d241a115b44597ed8d7b857d9d1, type: 3}
   HealthbarSliderPrefab: {fileID: 2294190142076272898, guid: 6ffee8aea4c6e1e4eb8a056610501ee0, type: 3}
+  turret: {fileID: 4283070810117361257}
 --- !u!1 &4283070810117318021
 GameObject:
   m_ObjectHideFlags: 0
@@ -694,14 +694,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4283070810117361257}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.00000063896175, y: 3.5220144, z: 0.37639213}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4283070810117536905}
+  - {fileID: 1369560956245596566}
   m_Father: {fileID: 4283070810117545947}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4283070810116208879
 MeshFilter:
   m_ObjectHideFlags: 0

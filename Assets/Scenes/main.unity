@@ -772,6 +772,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3362110322672538062, guid: 85c105749a8483b499c3d58492b30bce, type: 3}
+      propertyPath: ammoPrefab
+      value: 
+      objectReference: {fileID: 4082570663889379803, guid: 05ccf8e64564bd541a510f4ec5374bb9, type: 3}
+    - target: {fileID: 3362110322672538062, guid: 85c105749a8483b499c3d58492b30bce, type: 3}
       propertyPath: HealthbarSliderPrefab
       value: 
       objectReference: {fileID: 1988306684}

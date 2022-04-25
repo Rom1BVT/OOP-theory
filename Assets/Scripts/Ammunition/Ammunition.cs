@@ -7,7 +7,8 @@ public class Ammunition : MonoBehaviour
     protected float velocity;
     protected int strikePower;
     private float inboundLimit = 50;
-    
+    protected string targetTag;
+
 
 
     private void Update()
@@ -27,9 +28,14 @@ public class Ammunition : MonoBehaviour
     }
 
 
-    protected void OnCollisionEnter(Collision collision)
+    protected virtual void OnTriggerEnter(Collider other)
     {
-        collision.gameObject.GetComponent<Vehicles>().TakeDamage(strikePower);
-        Destroy(gameObject);
+        if (other.gameObject.CompareTag(targetTag))
+        {
+            other.gameObject.GetComponent<Vehicles>().TakeDamage(strikePower);
+            Destroy(gameObject);
+        }
     }
+
+   
 }

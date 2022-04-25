@@ -57,7 +57,13 @@ public abstract class Vehicles : MonoBehaviour
     }
     protected void Shoot(GameObject ammoType, Transform origin, Vector3 direction)
     {
-        
+        if (isReadyToShoot)
+        {
+            var ammoInstance = Instantiate(ammoType, origin.position, origin.rotation);
+            ammoInstance.transform.rotation = Quaternion.FromToRotation(Vector3.forward, direction - transform.position);
+            isReadyToShoot = false;
+            StartCoroutine(ShootCooldown());
+        }
     }
 
     protected abstract void Behaviour();

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Tank : Vehicles
 {
-    // Start is called before the first frame update
+    [SerializeField] protected GameObject turret;
     private Tank()
     {
         healthPoint = 300;
@@ -16,7 +16,19 @@ public class Tank : Vehicles
     //this method will be called in every frame
     protected override void Behaviour()
     {
+        RotateTurret();
+        Shoot(ammoPrefab, shotOrigin);
+    }
 
+    private void RotateTurret()
+    {
+        var playerPosition = GameObject.Find("Player").transform.position;
+        var turretRotation = Quaternion.FromToRotation(Vector3.forward, playerPosition - turret.transform.position);
+
+
+        float yTurretAngle = turretRotation.eulerAngles.y;
+        turret.transform.rotation = new Quaternion(0, 0, 0, 0);
+        turret.transform.Rotate(0, yTurretAngle, 0);
     }
 
 

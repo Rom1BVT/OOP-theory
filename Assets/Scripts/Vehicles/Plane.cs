@@ -16,7 +16,8 @@ public class Plane : Vehicles
     //this method will be called in every frame
     protected override void Behaviour()
     {
-
+        var PlayerPosition = GameObject.Find("Player").transform.position;
+        Shoot(ammoPrefab, shotOrigin, PlayerPosition);
     }
 
 

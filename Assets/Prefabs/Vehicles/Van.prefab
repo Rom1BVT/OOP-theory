@@ -357,7 +357,7 @@ GameObject:
   - component: {fileID: 7108147392147095370}
   m_Layer: 0
   m_Name: Van
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -458,7 +458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotOrigin: {fileID: 6434950965332219260}
-  ammoPrefab: {fileID: 4082570663889379803, guid: 1a5883ea3cdb6ef4a89385222787dffb, type: 3}
+  ammoPrefab: {fileID: 4082570663889379803, guid: 09409d241a115b44597ed8d7b857d9d1, type: 3}
   HealthbarSliderPrefab: {fileID: 2294190142076272898, guid: 6ffee8aea4c6e1e4eb8a056610501ee0, type: 3}
 --- !u!1 &6848160770160055445
 GameObject:
@@ -579,10 +579,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8108396058096920982}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.33, z: -2.81}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 1.33, z: -2.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6848160770159542517}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
