@@ -5,20 +5,31 @@ using UnityEngine.UI;
 
 public abstract class Vehicles : MonoBehaviour
 {
+    // INHERITED - Caracteristics of vehicles
     protected float healthPoint;
     protected float speedFire;
     protected int pointValue;
+    private bool isReadyToShoot = true;
+
     [SerializeField] protected Transform shotOrigin;
     [SerializeField] protected GameObject ammoPrefab;
     [SerializeField] protected Slider HealthbarSliderPrefab;
     protected Slider HealthbarInstance;
-    private bool isReadyToShoot = true;
+
+    //used in scene entry
+    private IEnumerator entryCoroutine;
+    protected bool isOnStage = false;
+    private float entryDelay = 2.0f;
+    private float entryTimeLeft;
+    private float zUnits = 9.0f;
+
 
     //Variables HandlingHealthbar()
     private float xResolution;
     private float yResolution;
     protected Vector3 offsetBarPosition;
     protected float maxHealthPoint; 
+
 
 
     private void Awake()
@@ -29,11 +40,13 @@ public abstract class Vehicles : MonoBehaviour
     private void Start()
     {
         maxHealthPoint = healthPoint;
+        entryCoroutine = EntryRoutine();
+        StartCoroutine(entryCoroutine);
     }
 
     private void Update()
     {
-        Behaviour();
+        if (isOnStage) { Behaviour(); } // the vehicle can't shoot or move before his entry is  not finished
         HandlingHealthbar();
     }
 
@@ -85,5 +98,27 @@ public abstract class Vehicles : MonoBehaviour
     {
         yield return new WaitForSeconds(1 / speedFire);
         isReadyToShoot = true;
+    }
+
+    IEnumerator EntryRoutine()
+    {
+        
+        entryTimeLeft = Time.time + entryDelay;
+        while (true)
+        {
+            ComeOnStage();
+            if (isOnStage) { StopCoroutine(entryCoroutine); }
+            yield return null;
+        }
+    }
+
+    protected virtual void ComeOnStage()
+    {
+        //called every frame 
+        transform.Translate(-Vector3.forward * Time.deltaTime * zUnits / entryDelay);
+        if (entryTimeLeft < Time.time)
+        {
+            isOnStage = true;
+        }
     }
 }

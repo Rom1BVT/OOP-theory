@@ -118,4 +118,9 @@ public class Player : Vehicles
         turret.transform.Rotate(0, yTurretAngle, 0);
 
     }
+
+    protected override void ComeOnStage()
+    {
+        isOnStage = true; // no entry routine
+    }
 }
