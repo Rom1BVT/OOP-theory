@@ -34,11 +34,12 @@ public abstract class Vehicles : MonoBehaviour
 
     private void Awake()
     {
-        xResolution = GameObject.Find("Canvas").GetComponent<RectTransform>().rect.width;
-        yResolution = GameObject.Find("Canvas").GetComponent<RectTransform>().rect.height;
+
     }
     private void Start()
     {
+        xResolution = GameObject.Find("Canvas").GetComponent<RectTransform>().rect.width;
+        yResolution = GameObject.Find("Canvas").GetComponent<RectTransform>().rect.height;
         maxHealthPoint = healthPoint;
         entryCoroutine = EntryRoutine();
         StartCoroutine(entryCoroutine);
@@ -90,6 +91,7 @@ public abstract class Vehicles : MonoBehaviour
         }
         Vector3 screenPosition = Camera.main.WorldToViewportPoint(transform.position + offsetBarPosition);
         HealthbarInstance.gameObject.transform.position = new Vector3(screenPosition.x * xResolution, screenPosition.y * yResolution, 0);
+        Debug.Log(HealthbarInstance.gameObject.transform.position);
         HealthbarInstance.value = healthPoint / maxHealthPoint;
         
     }
