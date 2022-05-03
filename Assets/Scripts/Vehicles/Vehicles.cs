@@ -27,6 +27,8 @@ public abstract class Vehicles : MonoBehaviour
     //Variables HandlingHealthbar()
     private float xResolution;
     private float yResolution;
+    private float xScale;
+    private float yScale;
     protected Vector3 offsetBarPosition;
     protected float maxHealthPoint; 
 
@@ -40,6 +42,8 @@ public abstract class Vehicles : MonoBehaviour
     {
         xResolution = GameObject.Find("Canvas").GetComponent<RectTransform>().rect.width;
         yResolution = GameObject.Find("Canvas").GetComponent<RectTransform>().rect.height;
+        xScale = GameObject.Find("Canvas").GetComponent<RectTransform>().lossyScale.x;
+        yScale = GameObject.Find("Canvas").GetComponent<RectTransform>().lossyScale.y;
         maxHealthPoint = healthPoint;
         entryCoroutine = EntryRoutine();
         StartCoroutine(entryCoroutine);
@@ -90,10 +94,9 @@ public abstract class Vehicles : MonoBehaviour
             HealthbarInstance = Instantiate(HealthbarSliderPrefab, GameObject.Find("Canvas").transform);
         }
         Vector3 screenPosition = Camera.main.WorldToViewportPoint(transform.position + offsetBarPosition);
-        HealthbarInstance.gameObject.transform.position = new Vector3(screenPosition.x * xResolution, screenPosition.y * yResolution, 0);
+        HealthbarInstance.gameObject.transform.position = new Vector3(screenPosition.x * xResolution * xScale, screenPosition.y * yResolution * yScale, 0);
         Debug.Log(HealthbarInstance.gameObject.transform.position);
-        HealthbarInstance.value = healthPoint / maxHealthPoint;
-        
+        HealthbarInstance.value = healthPoint / maxHealthPoint;       
     }
 
     IEnumerator ShootCooldown()
