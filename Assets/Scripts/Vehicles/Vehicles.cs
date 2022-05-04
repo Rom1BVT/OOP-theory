@@ -95,7 +95,6 @@ public abstract class Vehicles : MonoBehaviour
         }
         Vector3 screenPosition = Camera.main.WorldToViewportPoint(transform.position + offsetBarPosition);
         HealthbarInstance.gameObject.transform.position = new Vector3(screenPosition.x * xResolution * xScale, screenPosition.y * yResolution * yScale, 0);
-        Debug.Log(HealthbarInstance.gameObject.transform.position);
         HealthbarInstance.value = healthPoint / maxHealthPoint;       
     }
 

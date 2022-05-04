@@ -10,12 +10,21 @@ public class GameManager : MonoBehaviour
     //Variables for enemy positionning
     private Vector3 spawnMark = new Vector3(-14.37f, 0, 41.0f);
     private float gapBetweenLanes = 9.67f;
-    private int lanes = 4;
+    private GameObject[] lanes = new GameObject[4];
+
+    private bool isReadyToSpawn = false;
+
+    //Variable for difficulty and score count
+    private float spawnCooldown;
+
+    private int score;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        score = 0;
+        SetDifficulty(1);
+        StartCoroutine(NextSpawnCooldown(spawnCooldown));
 
     }
 
@@ -27,29 +36,47 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-        else if (Input.GetKeyDown(KeyCode.Space))
+
+        if (isReadyToSpawn)
         {
-            InstanciateEnemy();
+            InstanciateEnemy(enemyPrefab[0]);            
+        }
+
+
+    }
+
+    private void InstanciateEnemy(GameObject enemy)
+    {
+        int randomLane = Random.Range(0, lanes.Length);
+        if (lanes[randomLane] == null)
+        {
+            Vector3 lanePosition = new Vector3(spawnMark.x + randomLane * gapBetweenLanes, spawnMark.y, spawnMark.z);
+            lanes[randomLane] = Instantiate(enemy, lanePosition, enemy.transform.rotation);
+            isReadyToSpawn = false;
+            StartCoroutine(NextSpawnCooldown(spawnCooldown));
         }
     }
 
-    private void InstanciateEnemy()
-    {
-        Instantiate(enemyPrefab[0], RandomSpawnPosition(), enemyPrefab[0].transform.rotation);
 
+    IEnumerator NextSpawnCooldown(float timer)
+    {
+        yield return new WaitForSeconds(timer);
+        isReadyToSpawn = true;
     }
 
-    private Vector3 RandomSpawnPosition()
+    private void SetDifficulty(int difficulty)
     {
-        float randomX = spawnMark.x + Random.Range(0, lanes-1) * gapBetweenLanes;
-        Vector3 randomPosition = new Vector3(randomX, spawnMark.y, spawnMark.z);
-        return randomPosition;
+        switch (difficulty)
+        {
+            case 1:
+                spawnCooldown = 1.0f;
+                break;
+        }
     }
-
 
 }
 
-
+    
 /*
  * Spawn positions :
  *-14.37 -4.7
