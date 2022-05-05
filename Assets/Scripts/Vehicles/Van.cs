@@ -9,8 +9,10 @@ public class Van : Vehicles
         healthPoint = 100;
         speedFire = 0.5f;
         pointValue = 50;
-        offsetBarPosition = new Vector3(0, 4, -2);
-    }
+        offsetBarPosition = new Vector3(0, 4, -2);    
+        entryDelay = 2.0f;
+        zUnits = 9.0f;
+}
 
     //this method will be called in every frame
     protected override void Behaviour()

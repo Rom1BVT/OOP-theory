@@ -15,20 +15,18 @@ public abstract class Vehicles : MonoBehaviour
     [SerializeField] protected GameObject ammoPrefab;
     [SerializeField] protected Slider HealthbarSliderPrefab;
     protected Slider HealthbarInstance;
+    private GameManager gameManager;
 
     //used in scene entry
     private IEnumerator entryCoroutine;
-    protected bool isOnStage = false;
-    private float entryDelay = 2.0f;
     private float entryTimeLeft;
-    private float zUnits = 9.0f;
+    protected bool isOnStage = false;
+    protected float entryDelay;
+    protected float zUnits;
 
 
     //Variables HandlingHealthbar()
-    private float xResolution;
-    private float yResolution;
-    private float xScale;
-    private float yScale;
+    private RectTransform canvasRectTrans;
     protected Vector3 offsetBarPosition;
     protected float maxHealthPoint; 
 
@@ -40,10 +38,8 @@ public abstract class Vehicles : MonoBehaviour
     }
     private void Start()
     {
-        xResolution = GameObject.Find("Canvas").GetComponent<RectTransform>().rect.width;
-        yResolution = GameObject.Find("Canvas").GetComponent<RectTransform>().rect.height;
-        xScale = GameObject.Find("Canvas").GetComponent<RectTransform>().lossyScale.x;
-        yScale = GameObject.Find("Canvas").GetComponent<RectTransform>().lossyScale.y;
+        canvasRectTrans = GameObject.Find("Canvas").GetComponent<RectTransform>();
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         maxHealthPoint = healthPoint;
         entryCoroutine = EntryRoutine();
         StartCoroutine(entryCoroutine);
@@ -60,6 +56,7 @@ public abstract class Vehicles : MonoBehaviour
         healthPoint -= damage;
         if (healthPoint <= 0)
         {
+            gameManager.Score += pointValue;
             Destroy(HealthbarInstance.gameObject);
             Destroy(gameObject);
         }
@@ -94,7 +91,7 @@ public abstract class Vehicles : MonoBehaviour
             HealthbarInstance = Instantiate(HealthbarSliderPrefab, GameObject.Find("Canvas").transform);
         }
         Vector3 screenPosition = Camera.main.WorldToViewportPoint(transform.position + offsetBarPosition);
-        HealthbarInstance.gameObject.transform.position = new Vector3(screenPosition.x * xResolution * xScale, screenPosition.y * yResolution * yScale, 0);
+        HealthbarInstance.gameObject.transform.position = new Vector3(screenPosition.x * canvasRectTrans.rect.width * canvasRectTrans.lossyScale.x, screenPosition.y * canvasRectTrans.rect.height * canvasRectTrans.lossyScale.y, 0);
         HealthbarInstance.value = healthPoint / maxHealthPoint;       
     }
 

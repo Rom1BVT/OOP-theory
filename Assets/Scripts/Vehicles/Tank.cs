@@ -11,6 +11,8 @@ public class Tank : Vehicles
         speedFire = 0.5f;
         pointValue = 150;
         offsetBarPosition = new Vector3(0, 6, 0);
+        entryDelay = 2.0f;
+        zUnits = 11.0f;
     }
 
     //this method will be called in every frame

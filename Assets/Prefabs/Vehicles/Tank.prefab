@@ -467,7 +467,7 @@ GameObject:
   - component: {fileID: 315072434189631373}
   - component: {fileID: 8537303132403346599}
   m_Layer: 0
-  m_Name: Armor_Car
+  m_Name: Tank
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
