@@ -19,7 +19,7 @@ public abstract class Vehicles : MonoBehaviour
 
     //used in scene entry
     private IEnumerator entryCoroutine;
-    private float entryTimeLeft;
+    protected float entryTimeLeft;
     protected bool isOnStage = false;
     protected float entryDelay;
     protected float zUnits;

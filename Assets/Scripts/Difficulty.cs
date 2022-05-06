@@ -25,31 +25,67 @@ public class Difficulty
                 pointToReach = 50;
                 break;
             case 1:
-                //1 van every 3 seconds
-                maxEnemyInScene = 3;
-                maxVanInScene = 3;
-                maxTankInScene = 1;
-                maxPlaneInScene = 0;
+                //1 van every 3 seconds (max 2)
+                maxEnemyInScene = 2;
+                maxVanInScene = 2;
+                maxTankInScene = 0;
+                maxPlaneInScene =0;
                 spawnCooldown = 3.0f;
-                pointToReach = 9999;
+                pointToReach = 300;
                 break;
             case 2:
-                //1 van every 2 seconds
+                //1 van every 2 seconds (max 3)
+                maxEnemyInScene = 3;
+                maxVanInScene = 3;
+                maxTankInScene = 0;
+                maxPlaneInScene = 0;
+                spawnCooldown = 2.0f;
+                pointToReach = 800;
                 break;
             case 3:
                 //Spawn 1 tank
+                maxEnemyInScene = 1;
+                maxVanInScene = 0;
+                maxTankInScene = 1;
+                maxPlaneInScene = 0;
+                spawnCooldown = 5.0f;
+                pointToReach = 950;
                 break;
             case 4:
                 //1 van every 4 sec and 1 tank (1 by 1) 
+                maxEnemyInScene = 4;
+                maxVanInScene = 4;
+                maxTankInScene = 1;
+                maxPlaneInScene = 0;
+                spawnCooldown = 4.0f;
+                pointToReach = 1500;
                 break;
             case 5:
                 //1 tank every 5 sec
+                maxEnemyInScene = 4;
+                maxVanInScene = 0;
+                maxTankInScene = 4;
+                maxPlaneInScene = 0;
+                spawnCooldown = 5.0f;
+                pointToReach = 2250;
                 break;
             case 6:
                 //spawn 1 plane
+                maxEnemyInScene = 1;
+                maxVanInScene = 0;
+                maxTankInScene = 0;
+                maxPlaneInScene = 1;
+                spawnCooldown = 10.0f;
+                pointToReach = 3000;
                 break;
             case 7:
                 //spawn 1 plane every 10s + 1 tank every 5 sec
+                maxEnemyInScene = 6;
+                maxVanInScene = 4;
+                maxTankInScene = 4;
+                maxPlaneInScene = 2;
+                spawnCooldown = 5.0f;
+                pointToReach = 9999;
                 break;
         }
     }

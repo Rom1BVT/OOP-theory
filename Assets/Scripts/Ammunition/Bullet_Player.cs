@@ -7,7 +7,7 @@ public class Bullet_Player : Ammunition
     Bullet_Player()
     {
         velocity = 100;
-        strikePower = 5;
+        strikePower = 20; //reset to 5
         targetTag = "Enemy";
     }
 

@@ -9,9 +9,11 @@ public class GameManager : MonoBehaviour
     public GameObject[] enemyPrefab;
 
     //Variables for enemy positionning
-    private Vector3 spawnMark = new Vector3(-14.37f, 0, 41.0f);
-    private float gapBetweenLanes = 9.67f;
-    private GameObject[] lanes = new GameObject[4];
+    private Vector3 roadSpawnMark = new Vector3(-14.37f, 0, 41.0f);
+    private Vector3 planeSpawnMark = new Vector3(-28, 0, -18);
+    private float gapRoadLanes = 9.67f;
+    private float gapPlaneLanes = 56.0f;
+    private GameObject[] lanes = new GameObject[6];
     private bool isReadyToSpawn = false;
 
     //Variable for difficulty and score count
@@ -60,15 +62,16 @@ public class GameManager : MonoBehaviour
 
         if (isReadyToSpawn)
         {
-            int randomEnemy = Random.Range(0,2);
+            int randomEnemy = Random.Range(0,enemyPrefab.Length);
             InstanciateEnemy(enemyPrefab[randomEnemy]); 
         }
 
         if(score >= difficultyManager.pointToReach)
         {
-            difficultyManager.SetDifficulty(currentDifficulty + 1);
+            currentDifficulty++;
+            difficultyManager.SetDifficulty(currentDifficulty);
         }
-
+        //Debug.Log($"Score: {score} / Points to reach : {difficultyManager.pointToReach}");
     }
 
     private void InstanciateEnemy(GameObject enemy)
@@ -111,19 +114,38 @@ public class GameManager : MonoBehaviour
 
 
 
+        //Plane lanes = 0 or 6 / van and tank lanes = 1 to 5
+        int randomLane;
+        if (enemy.gameObject.name == "Plane")
+        {
+            randomLane = Random.Range(0, 2) * (lanes.Length - 1);
+        }
+        else
+        {
+            randomLane = Random.Range(1, lanes.Length - 1);
+        }
+
         //Instanciate an ennemy if the lane is empty and if the max is not reach
-        int randomLane = Random.Range(0, lanes.Length);
         if (lanes[randomLane] == null && currentEnemies < difficultyManager.maxEnemyInScene)
         {
             if (numberEnemyOfThisType < maxEnemyOfThisTypeAllowed)
             {
-                Vector3 lanePosition = new Vector3(spawnMark.x + randomLane * gapBetweenLanes, spawnMark.y, spawnMark.z);
+                Vector3 lanePosition;
+                if (enemy.gameObject.name == "Plane")
+                {
+                    lanePosition = new Vector3(planeSpawnMark.x + randomLane / (lanes.Length -1 ) * gapPlaneLanes, planeSpawnMark.y, planeSpawnMark.z);
+                }
+                else 
+                { 
+                    lanePosition = new Vector3(roadSpawnMark.x + (randomLane - 1) * gapRoadLanes, roadSpawnMark.y, roadSpawnMark.z); 
+                }
+
                 lanes[randomLane] = Instantiate(enemy, lanePosition, enemy.transform.rotation);
                 isReadyToSpawn = false;
                 StartCoroutine(NextSpawnCooldown(difficultyManager.spawnCooldown));
             }
         }
-        else if (numberOfVans.Length >= difficultyManager.maxEnemyInScene)
+        else if (currentEnemies >= difficultyManager.maxEnemyInScene)
         {
             isReadyToSpawn = false;
             StartCoroutine(NextSpawnCooldown(difficultyManager.spawnCooldown));
