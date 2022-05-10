@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 
     //Variables for enemy positionning
     private Vector3 roadSpawnMark = new Vector3(-14.37f, 0, 41.0f);
-    private Vector3 planeSpawnMark = new Vector3(-28, 0, -18);
+    private Vector3 planeSpawnMark = new Vector3(-32, 0, -18);
     private float gapRoadLanes = 9.67f;
     private float gapPlaneLanes = 56.0f;
     private GameObject[] lanes = new GameObject[6];
@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
         {
             currentDifficulty++;
             difficultyManager.SetDifficulty(currentDifficulty);
+            GameObject.Find("/Canvas/Stars/Star" + currentDifficulty).gameObject.SetActive(true);
         }
         //Debug.Log($"Score: {score} / Points to reach : {difficultyManager.pointToReach}");
     }
@@ -169,14 +170,4 @@ public class GameManager : MonoBehaviour
 }
 
     
-/*
- * Spawn positions :
- *-14.37 -4.7
- *9.67
- *
- * instanciation:
- * tire au hasard une voie de circulation
- * on instancie le véhicule
- * 
- * si un véhicule est sur une voie de circulation on ne peux pas instancier à cette position
-*/
+
