@@ -20,7 +20,7 @@ public class Plane : Vehicles
 
     protected override void Behaviour()
     {
-        var PlayerPosition = GameObject.Find("Player").transform.position;
+        var PlayerPosition = FindPlayerPosition();
         Shoot(ammoPrefab, shotOrigin, PlayerPosition);
         transform.Translate(Vector3.forward * direction * Time.deltaTime * zUnits / entryDelay);
 

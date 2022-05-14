@@ -31,11 +31,6 @@ public abstract class Vehicles : MonoBehaviour
     protected float maxHealthPoint; 
 
 
-
-    private void Awake()
-    {
-
-    }
     private void Start()
     {
         canvasRectTrans = GameObject.Find("Canvas").GetComponent<RectTransform>();
@@ -63,7 +58,7 @@ public abstract class Vehicles : MonoBehaviour
     }
     protected void Shoot(GameObject ammoType, Transform origin)
     {
-        if (isReadyToShoot)
+        if (isReadyToShoot && !gameManager.isGameOver)
         {
             Instantiate(ammoType, origin.position, origin.rotation);
             isReadyToShoot = false;
@@ -72,7 +67,7 @@ public abstract class Vehicles : MonoBehaviour
     }
     protected void Shoot(GameObject ammoType, Transform origin, Vector3 direction)
     {
-        if (isReadyToShoot)
+        if (isReadyToShoot && !gameManager.isGameOver)
         {
             var ammoInstance = Instantiate(ammoType, origin.position, origin.rotation);
             ammoInstance.transform.rotation = Quaternion.FromToRotation(Vector3.forward, direction - transform.position);
@@ -102,8 +97,7 @@ public abstract class Vehicles : MonoBehaviour
     }
 
     IEnumerator EntryRoutine()
-    {
-        
+    {        
         entryTimeLeft = Time.time + entryDelay;
         while (true)
         {
@@ -121,5 +115,19 @@ public abstract class Vehicles : MonoBehaviour
         {
             isOnStage = true;
         }
+    }
+
+    protected Vector3 FindPlayerPosition()
+    {
+        
+        if (gameManager.isGameOver == false)
+        {
+            return GameObject.Find("Player").transform.position;
+        }
+        else
+        {
+            return Vector3.zero;
+        }
+        
     }
 }

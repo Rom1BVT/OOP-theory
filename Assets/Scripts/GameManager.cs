@@ -7,6 +7,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public GameObject[] enemyPrefab;
+    private GameObject player;
 
     //Variables for enemy positionning
     private Vector3 roadSpawnMark = new Vector3(-14.37f, 0, 41.0f);
@@ -21,9 +22,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] protected TextMeshProUGUI scoreText;
     private int numberEnemyOfThisType;
     private int maxEnemyOfThisTypeAllowed;
-
     private int currentDifficulty;
     private int score;
+    private string scoreTextPath = "/Canvas/Stars/Star";
     public int Score
     {
         get { return score; }
@@ -40,14 +41,18 @@ public class GameManager : MonoBehaviour
             }
         }       
     }
+    public bool isGameOver {  get; private set; }
 
+    [SerializeField]private GameObject gameOverUI;
 
     private void Awake()
     {
         difficultyManager = new Difficulty();
+        player = GameObject.Find("Player");
     }
     void Start()
     {
+        isGameOver = false;
         currentDifficulty = 0;
         score = 0;
         scoreText.text = $"Score: {score}";
@@ -70,9 +75,14 @@ public class GameManager : MonoBehaviour
         {
             currentDifficulty++;
             difficultyManager.SetDifficulty(currentDifficulty);
-            GameObject.Find("/Canvas/Stars/Star" + currentDifficulty).gameObject.SetActive(true);
+            GameObject.Find(scoreTextPath + currentDifficulty).SetActive(true);
         }
-        //Debug.Log($"Score: {score} / Points to reach : {difficultyManager.pointToReach}");
+
+
+        if (player == null)
+        {
+            GameOver();
+        }
     }
 
     private void InstanciateEnemy(GameObject enemy)
@@ -161,12 +171,22 @@ public class GameManager : MonoBehaviour
         isReadyToSpawn = true;
     }
 
-    
-    public void SetScore(int scoreToAdd)
+
+    private void GameOver()
     {
-        score += scoreToAdd;
+        isGameOver = true;
+        gameOverUI.gameObject.SetActive(true);
     }
 
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }
 
     
