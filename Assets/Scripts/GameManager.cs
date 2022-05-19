@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
         if (isReadyToSpawn)
         {
             int randomEnemy = Random.Range(0,enemyPrefab.Length);
-            InstanciateEnemy(enemyPrefab[randomEnemy]); 
+            InstanciateEnemy(enemyPrefab[randomEnemy]);
         }
 
         if(score >= difficultyManager.pointToReach)

@@ -14,15 +14,21 @@ public class TitleUIManager : MonoBehaviour
     private int mainSceneNumber = 1;
     private string playerName;
     public TMP_InputField inputName;
+    private string topTextPath = "/Canvas/TopText";
+    private TextMeshProUGUI topText;
 
     private void Start()
     {
         inputName.onValueChanged.AddListener(delegate { SetPlayerName(); });
+        topText = GameObject.Find(topTextPath).GetComponent<TextMeshProUGUI>();
+        topText.text = $"Top: {DataPersistence.Instance.playerName} - {DataPersistence.Instance.bestScore}";
     }
     
 
     public void Play()
     {
+        DataPersistence.Instance.playerName = playerName;
+        if (inputName.text == null) { playerName = "???"; }
         SceneManager.LoadScene(mainSceneNumber);
     }
 
@@ -38,6 +44,5 @@ public class TitleUIManager : MonoBehaviour
     public void SetPlayerName()
     {
         playerName = inputName.text;
-        Debug.Log(playerName);
     }
 }
