@@ -36,11 +36,11 @@ public class DataPersistence : MonoBehaviour
     public void SaveScore()
     {
         var data = new SaveData();
-        data.bestPlayer = playerName;
+        data.bestPlayer = bestPlayer;
         data.bestScore = bestScore;
 
         string json = JsonUtility.ToJson(data);
-        File.WriteAllText(Application.persistentDataPath + "/safile.json", json);
+        File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
     }
 
     public void LoadScore()
@@ -52,7 +52,7 @@ public class DataPersistence : MonoBehaviour
             var json = File.ReadAllText(path);
             SaveData data = JsonUtility.FromJson<SaveData>(json);
 
-            playerName = data.bestPlayer;
+            bestPlayer = data.bestPlayer;
             bestScore = data.bestScore;
         }
 

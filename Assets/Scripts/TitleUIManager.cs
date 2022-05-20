@@ -19,17 +19,15 @@ public class TitleUIManager : MonoBehaviour
 
     private void Start()
     {
-        playerName = "";
+        DataPersistence.Instance.LoadScore();
         inputName.onValueChanged.AddListener(delegate { SetPlayerName(); });
         topText = GameObject.Find(topTextPath).GetComponent<TextMeshProUGUI>();
         if (DataPersistence.Instance.bestScore > 0)
         {
             topText.text = $"Top: {DataPersistence.Instance.bestPlayer} - {DataPersistence.Instance.bestScore}";
         }
-        else
-        {
-            topText.text = "";
-        }
+        Debug.Log(DataPersistence.Instance.bestPlayer + DataPersistence.Instance.bestScore);
+
     }
     
 

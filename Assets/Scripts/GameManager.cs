@@ -178,6 +178,7 @@ public class GameManager : MonoBehaviour
         isGameOver = true;
         gameOverUI.gameObject.SetActive(true);
         DataPersistence.Instance.UpdateLeaderboard(score);
+        DataPersistence.Instance.SaveScore();
     }
 
     public void RestartGame()
