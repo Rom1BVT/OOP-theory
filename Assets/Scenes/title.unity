@@ -960,6 +960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: 
+  bestPlayer: 
   bestScore: 0
 --- !u!1 &767948415
 GameObject:

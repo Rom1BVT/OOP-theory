@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
     public bool isGameOver {  get; private set; }
 
     [SerializeField]private GameObject gameOverUI;
+    private int titleScene = 0;
 
     private void Awake()
     {
@@ -176,6 +177,7 @@ public class GameManager : MonoBehaviour
     {
         isGameOver = true;
         gameOverUI.gameObject.SetActive(true);
+        DataPersistence.Instance.UpdateLeaderboard(score);
     }
 
     public void RestartGame()
@@ -185,7 +187,7 @@ public class GameManager : MonoBehaviour
 
     public void GoToMainMenu()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(titleScene);
     }
 }
 

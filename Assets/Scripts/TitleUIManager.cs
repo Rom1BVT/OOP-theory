@@ -19,17 +19,26 @@ public class TitleUIManager : MonoBehaviour
 
     private void Start()
     {
+        playerName = "";
         inputName.onValueChanged.AddListener(delegate { SetPlayerName(); });
         topText = GameObject.Find(topTextPath).GetComponent<TextMeshProUGUI>();
-        topText.text = $"Top: {DataPersistence.Instance.playerName} - {DataPersistence.Instance.bestScore}";
+        if (DataPersistence.Instance.bestScore > 0)
+        {
+            topText.text = $"Top: {DataPersistence.Instance.bestPlayer} - {DataPersistence.Instance.bestScore}";
+        }
+        else
+        {
+            topText.text = "";
+        }
     }
     
 
     public void Play()
     {
         DataPersistence.Instance.playerName = playerName;
-        if (inputName.text == null) { playerName = "???"; }
+        if (string.IsNullOrEmpty(DataPersistence.Instance.playerName)) { DataPersistence.Instance.playerName = "???"; }
         SceneManager.LoadScene(mainSceneNumber);
+        
     }
 
     public void Exit()
