@@ -26,7 +26,6 @@ public class TitleUIManager : MonoBehaviour
         {
             topText.text = $"Top: {DataPersistence.Instance.bestPlayer} - {DataPersistence.Instance.bestScore}";
         }
-        Debug.Log(DataPersistence.Instance.bestPlayer + DataPersistence.Instance.bestScore);
 
     }
     

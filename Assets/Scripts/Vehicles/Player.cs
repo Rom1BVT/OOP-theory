@@ -12,15 +12,25 @@ public class Player : Vehicles
     private float zPositionMax = 28;
     private float zPositionMin = -5;
     private float rotationSpeed = 100;
+    private float spreadRadius = 4;
 
     public GameObject turret;
     public GameObject bodyArmor;
+
+    //Missiles variables
+    public GameObject missilePrefab;
+    private string missilePath = "/Canvas/Missiles/Missile";
+    private int missileCount;
+    private int maxMissiles = 4;
+    private int missileCooldown = 5;
 
     private Player()
     {
         healthPoint = 100;
         speedFire = 10;
+        missileCount = maxMissiles;
     }
+
 
     //this method will be called in every frame
     protected override void Behaviour()
@@ -29,8 +39,16 @@ public class Player : Vehicles
 
         if (Input.GetButton("Fire1"))
         {
-            Shoot(ammoPrefab, shotOrigin);
+            Shoot(ammoPrefab, shotOrigin, spreadRadius);
         }
+        else if (Input.GetButtonDown("Fire2"))
+        {
+            if (CheckMissile())
+            {
+                Shoot(missilePrefab, shotOrigin);
+            }
+        }
+        Debug.Log(missileCount);
     }
 
     protected override void HandlingHealthbar()
@@ -122,5 +140,28 @@ public class Player : Vehicles
     protected override void ComeOnStage()
     {
         isOnStage = true; // no entry routine
+    }
+
+    private bool CheckMissile()
+    {
+        if (missileCount > 0)
+        {
+            GameObject.Find(missilePath + missileCount).SetActive(false);
+            missileCount--;
+            StartCoroutine(RecoverMissileCooldown());
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
+    }
+
+    IEnumerator RecoverMissileCooldown()
+    {
+        yield return new WaitForSeconds(missileCooldown);
+        missileCount++;
+        GameObject.Find(missilePath + missileCount).SetActive(true);
     }
 }

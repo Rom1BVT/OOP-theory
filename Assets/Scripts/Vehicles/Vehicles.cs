@@ -65,6 +65,21 @@ public abstract class Vehicles : MonoBehaviour
             StartCoroutine(ShootCooldown());
         }
     }
+
+    protected void Shoot(GameObject ammoType, Transform origin, float spreadRadius)
+    {      
+        float randomSpreadRange = Random.Range(-spreadRadius, spreadRadius);
+        origin.Rotate(0, randomSpreadRange, 0);
+
+        if (isReadyToShoot && !gameManager.isGameOver)
+        {
+            Instantiate(ammoType, origin.position, origin.rotation);
+            isReadyToShoot = false;
+            StartCoroutine(ShootCooldown());
+        }
+        origin.rotation = new Quaternion(0, 0, 0, 0);
+    }
+
     protected void Shoot(GameObject ammoType, Transform origin, Vector3 direction)
     {
         if (isReadyToShoot && !gameManager.isGameOver)
