@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     private Vector3 roadSpawnMark = new Vector3(-14.37f, 0, 41.0f);
     private Vector3 planeSpawnMark = new Vector3(-32, 0, -18);
     private float gapRoadLanes = 9.67f;
-    private float gapPlaneLanes = 56.0f;
+    private float gapPlaneLanes = 64.0f;
     private GameObject[] lanes = new GameObject[6];
     private bool isReadyToSpawn = false;
 

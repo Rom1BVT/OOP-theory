@@ -22,7 +22,7 @@ public class Player : Vehicles
     private string missilePath = "/Canvas/Missiles/Missile";
     private int missileCount;
     private int maxMissiles = 4;
-    private int missileCooldown = 5;
+    private int missileCooldown = 8;
 
     private Player()
     {
@@ -48,7 +48,6 @@ public class Player : Vehicles
                 Shoot(missilePrefab, shotOrigin);
             }
         }
-        Debug.Log(missileCount);
     }
 
     protected override void HandlingHealthbar()

@@ -24,7 +24,7 @@ public class Tank : Vehicles
 
     private void RotateTurret()
     {
-        var playerPosition = FindPlayerPosition(); ;
+        var playerPosition = FindPlayerPosition(); 
         var turretRotation = Quaternion.FromToRotation(Vector3.forward, playerPosition - turret.transform.position);
 
 
