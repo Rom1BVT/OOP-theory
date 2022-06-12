@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Difficulty
 {
+    //ENCAPSULATION
     public float spawnCooldown { get; private set; } // time between 2 spawn
     public int maxEnemyInScene { get; private set; } // max enemies in the scene
     public int maxTankInScene { get; private set; }

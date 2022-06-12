@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class Ammunition : MonoBehaviour
 {
+    // INHERITANCE - Caracteristics of Ammunitions
     protected float velocity;
     protected int strikePower;
-    private float inboundLimit = 50;
     protected string targetTag;
 
+    private float inboundLimit = 50;
 
 
-    private void Update()
+
+
+    private void Update() //INHERITANCE
     {
         //move forward
         transform.Translate(Vector3.forward * velocity * Time.deltaTime);
@@ -28,7 +31,7 @@ public class Ammunition : MonoBehaviour
     }
 
 
-    protected virtual void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other) //INHERITANCE
     {
         if (other.gameObject.CompareTag(targetTag))
         {

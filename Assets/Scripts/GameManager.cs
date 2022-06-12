@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
             }
         }       
     }
-    public bool isGameOver {  get; private set; }
+    public bool isGameOver {  get; private set; } // ENCAPSULATION
 
     [SerializeField]private GameObject gameOverUI;
     private int titleScene = 0;
@@ -69,20 +69,18 @@ public class GameManager : MonoBehaviour
         if (isReadyToSpawn)
         {
             int randomEnemy = Random.Range(0,enemyPrefab.Length);
-            InstanciateEnemy(enemyPrefab[randomEnemy]);
+            InstanciateEnemy(enemyPrefab[randomEnemy]); //ABSTRACTION
         }
 
         if(score >= difficultyManager.pointToReach)
         {
-            currentDifficulty++;
-            difficultyManager.SetDifficulty(currentDifficulty);
-            GameObject.Find(scoreTextPath + currentDifficulty).SetActive(true);
+            IncreaseDifficulty(); //ABSTRACTION
         }
 
 
         if (player == null)
         {
-            GameOver();
+            GameOver(); //ABSTRACTION
         }
     }
 
@@ -189,6 +187,13 @@ public class GameManager : MonoBehaviour
     public void GoToMainMenu()
     {
         SceneManager.LoadScene(titleScene);
+    }
+
+    private void IncreaseDifficulty()
+    {
+        currentDifficulty++;
+        difficultyManager.SetDifficulty(currentDifficulty);
+        GameObject.Find(scoreTextPath + currentDifficulty).SetActive(true);
     }
 }
 

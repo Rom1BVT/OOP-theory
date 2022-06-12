@@ -20,15 +20,27 @@ public class Plane : Vehicles
 
     protected override void Behaviour()
     {
-        var PlayerPosition = FindPlayerPosition();
+        var PlayerPosition = FindPlayerPosition();//ABSTRACTION
         Shoot(ammoPrefab, shotOrigin, PlayerPosition);
+        Move(); //ABSTRACTION
+    }
+
+    private void Move()
+    {
         transform.Translate(Vector3.forward * direction * Time.deltaTime * zUnits / entryDelay);
 
-        timeBeforeSwitch -= Time.deltaTime;
-        if(timeBeforeSwitch <= 0)
+        if (!gameManager.isGameOver)
         {
-            direction *= -1;
-            timeBeforeSwitch = zMax / (zUnits / entryDelay);
+            timeBeforeSwitch -= Time.deltaTime;
+            if (timeBeforeSwitch <= 0)
+            {
+                direction *= -1;
+                timeBeforeSwitch = zMax / (zUnits / entryDelay);
+            }
+        }
+        else
+        {
+            direction = 1;
         }
     }
 

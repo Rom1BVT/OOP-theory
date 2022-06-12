@@ -17,7 +17,7 @@ public class Missile : Ammunition
         if (other.gameObject.CompareTag(targetTag))
         {
             other.gameObject.GetComponent<Vehicles>().TakeDamage(strikePower);
-            Instantiate(explosionParticles, transform.position, transform.rotation);
+            Instantiate(explosionParticles, transform.position, transform.rotation); //Instanciation of an explosion effect
             Destroy(gameObject);
         }
     }

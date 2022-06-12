@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public abstract class Vehicles : MonoBehaviour
 {
-    // INHERITED - Caracteristics of vehicles
+    // INHERITANCE - Caracteristics of vehicles
     protected float healthPoint;
     protected float speedFire;
     protected int pointValue;
@@ -15,7 +15,7 @@ public abstract class Vehicles : MonoBehaviour
     [SerializeField] protected GameObject ammoPrefab;
     [SerializeField] protected Slider HealthbarSliderPrefab;
     protected Slider HealthbarInstance;
-    private GameManager gameManager;
+    protected GameManager gameManager;
 
     //used in scene entry
     private IEnumerator entryCoroutine;
@@ -46,7 +46,7 @@ public abstract class Vehicles : MonoBehaviour
         HandlingHealthbar();
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage) //INHERITANCE
     {
         healthPoint -= damage;
         if (healthPoint <= 0)
@@ -56,7 +56,7 @@ public abstract class Vehicles : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    protected void Shoot(GameObject ammoType, Transform origin)
+    protected void Shoot(GameObject ammoType, Transform origin) //POLYMORPHISM
     {
         if (isReadyToShoot && !gameManager.isGameOver)
         {
@@ -66,7 +66,7 @@ public abstract class Vehicles : MonoBehaviour
         }
     }
 
-    protected void Shoot(GameObject ammoType, Transform origin, float spreadRadius)
+    protected void Shoot(GameObject ammoType, Transform origin, float spreadRadius) //POLYMORPHISM
     {      
         float randomSpreadRange = Random.Range(-spreadRadius, spreadRadius);
         origin.Rotate(0, randomSpreadRange, 0);
@@ -80,7 +80,7 @@ public abstract class Vehicles : MonoBehaviour
         origin.rotation = new Quaternion(0, 0, 0, 0);
     }
 
-    protected void Shoot(GameObject ammoType, Transform origin, Vector3 direction)
+    protected void Shoot(GameObject ammoType, Transform origin, Vector3 direction) //POLYMORPHISM
     {
         if (isReadyToShoot && !gameManager.isGameOver)
         {
@@ -91,10 +91,10 @@ public abstract class Vehicles : MonoBehaviour
         }
     }
 
-    protected abstract void Behaviour();
+    protected abstract void Behaviour(); //POLYMORPHISM
 
 
-    protected virtual void HandlingHealthbar()
+    protected virtual void HandlingHealthbar() //INHERITANCE
     {
         if(HealthbarInstance == null)
         {
@@ -122,7 +122,7 @@ public abstract class Vehicles : MonoBehaviour
         }
     }
 
-    protected virtual void ComeOnStage()
+    protected virtual void ComeOnStage() //INHERITANCE
     {
         //called every frame 
         transform.Translate(-Vector3.forward * Time.deltaTime * zUnits / entryDelay);
@@ -132,7 +132,7 @@ public abstract class Vehicles : MonoBehaviour
         }
     }
 
-    protected Vector3 FindPlayerPosition()
+    protected Vector3 FindPlayerPosition() //INHERITANCE
     {
         
         if (gameManager.isGameOver == false)

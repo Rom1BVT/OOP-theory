@@ -17,7 +17,7 @@ public class Van : Vehicles
     //this method will be called in every frame
     protected override void Behaviour()
     {
-        var PlayerPosition = FindPlayerPosition();
+        var PlayerPosition = FindPlayerPosition(); //ABSTRACTION
         Shoot(ammoPrefab, shotOrigin,PlayerPosition);
     }
 
