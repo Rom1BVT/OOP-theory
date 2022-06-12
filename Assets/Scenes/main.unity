@@ -852,6 +852,7 @@ GameObject:
   - component: {fileID: 1025875140}
   - component: {fileID: 1025875139}
   - component: {fileID: 1025875138}
+  - component: {fileID: 1025875141}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -924,6 +925,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &1025875141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025875137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35b778cd9ef689a40a6e726362c5ee3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1034829394
 GameObject:
   m_ObjectHideFlags: 0
@@ -2687,6 +2700,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4082570663889379803, guid: 05ccf8e64564bd541a510f4ec5374bb9, type: 3}
     - target: {fileID: 3362110322672538062, guid: 85c105749a8483b499c3d58492b30bce, type: 3}
+      propertyPath: explosionFX
+      value: 
+      objectReference: {fileID: 5783888768270394343, guid: 2dabac7c3a7028140b30b643d12aa5b3, type: 3}
+    - target: {fileID: 3362110322672538062, guid: 85c105749a8483b499c3d58492b30bce, type: 3}
       propertyPath: missilePrefab
       value: 
       objectReference: {fileID: 8613527025769949132, guid: 888723752c3f8834fabc3dda21c45a48, type: 3}
@@ -2866,6 +2883,10 @@ PrefabInstance:
     - target: {fileID: 4328610762499097880, guid: 5663c7ed493493245b13099d1265b344, type: 3}
       propertyPath: m_Name
       value: Player_Healthbar
+      objectReference: {fileID: 0}
+    - target: {fileID: 4328610762499097880, guid: 5663c7ed493493245b13099d1265b344, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5663c7ed493493245b13099d1265b344, type: 3}

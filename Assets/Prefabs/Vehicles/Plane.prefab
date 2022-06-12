@@ -130,6 +130,7 @@ MonoBehaviour:
   shotOrigin: {fileID: 4093091273389667219}
   ammoPrefab: {fileID: 4082570663889379803, guid: 09409d241a115b44597ed8d7b857d9d1, type: 3}
   HealthbarSliderPrefab: {fileID: 2294190142076272898, guid: 6ffee8aea4c6e1e4eb8a056610501ee0, type: 3}
+  explosionFX: {fileID: 5783888768270394343, guid: 2dabac7c3a7028140b30b643d12aa5b3, type: 3}
 --- !u!65 &-2049831729467263451
 BoxCollider:
   m_ObjectHideFlags: 0

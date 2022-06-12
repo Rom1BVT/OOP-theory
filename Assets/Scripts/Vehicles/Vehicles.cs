@@ -28,7 +28,9 @@ public abstract class Vehicles : MonoBehaviour
     //Variables HandlingHealthbar()
     private RectTransform canvasRectTrans;
     protected Vector3 offsetBarPosition;
-    protected float maxHealthPoint; 
+    protected float maxHealthPoint;
+
+    public GameObject explosionFX;
 
 
     private void Start()
@@ -51,6 +53,7 @@ public abstract class Vehicles : MonoBehaviour
         healthPoint -= damage;
         if (healthPoint <= 0)
         {
+            Instantiate(explosionFX,transform.position,transform.rotation);
             gameManager.Score += pointValue;
             Destroy(HealthbarInstance.gameObject);
             Destroy(gameObject);

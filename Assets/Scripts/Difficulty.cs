@@ -84,9 +84,9 @@ public class Difficulty
                 maxEnemyInScene = 6;
                 maxVanInScene = 4;
                 maxTankInScene = 4;
-                maxPlaneInScene = 2;
+                maxPlaneInScene = 1;
                 spawnCooldown = 5.0f;
-                pointToReach = 9999;
+                pointToReach = 99999999;
                 break;
         }
     }
